@@ -3,76 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>Responsive Design</title>
     <style>
-        /* Improved CSS practices */
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #50e3c2;
+            --background-color: #ffffff;
+            --text-color: #333333;
+            --dark-background: #1a1a1a;
+            --dark-text: #f5f5f5;
+            --font-family: 'Arial', sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: var(--font-family);
+            transition: background-color 0.5s, color 0.5s;
         }
+
         header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-        main {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--dark-text);
             padding: 20px;
-        }
-        footer {
-            background-color: #333;
-            color: white;
             text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
         }
-        /* Added breakpoints */
-        @media (max-width: 768px) {
-            header, footer {
-                padding: 10px;
-            }
-            main {
-                padding: 10px;
+
+        .service-card {
+            background: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 10px;
+            padding: 15px;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        @media screen and (max-width: 360px) {
+            body {
+                font-size: 12px;
             }
         }
-        @media (max-width: 480px) {
-            header, footer {
+
+        @media screen and (min-width: 361px) and (max-width: 576px) {
+            body {
                 font-size: 14px;
             }
         }
-        /* Added animations */
-        .fade-in {
-            animation: fadeIn 1s ease-in;
+
+        @media screen and (min-width: 577px) and (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            body {
+                font-size: 18px;
+            }
         }
-        /* Improved accessibility with better color contrast */
-        a {
-            color: #FFD700;
-            text-decoration: none;
+
+        @media screen and (min-width: 1025px) and (max-width: 1440px) {
+            body {
+                font-size: 20px;
+            }
         }
-        a:hover {
-            text-decoration: underline;
-            color: #FF6347;
+
+        @media screen and (min-width: 1441px) {
+            body {
+                font-size: 22px;
+            }
+        }
+
+        .dark-mode {
+            background-color: var(--dark-background);
+            color: var(--dark-text);
         }
     </style>
 </head>
 <body>
-    <header class="fade-in">
-        <h1>Welcome to My Responsive Design</h1>
+    <header>
+        <h1>Professional Responsive Design</h1>
     </header>
     <main>
-        <p>This is a simple responsive web page with improved design practices.</p>
+        <section>
+            <div class="service-card">Service 1</div>
+            <div class="service-card">Service 2</div>
+            <div class="service-card">Service 3</div>
+            <div class="service-card">Service 4</div>
+            <div class="service-card">Service 5</div>
+            <div class="service-card">Service 6</div>
+        </section>
     </main>
-    <footer>
-        <p>&copy; 2026 Your Name</p>
-    </footer>
+    <script>
+        // Toggle dark mode
+        const toggleDarkMode = () => {
+            document.body.classList.toggle('dark-mode');
+        };
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'd') {
+                toggleDarkMode();
+            }
+        });
+    </script>
 </body>
 </html>
